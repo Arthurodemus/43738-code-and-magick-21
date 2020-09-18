@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Arthur Fox](https://up.htmlacademy.ru/javascript/21/user/43738).
-* Наставник: `Неизвестно`.
+* Наставник: [Жора Милевский](https://htmlacademy.ru/profile/id366911).
 
 ---
 
