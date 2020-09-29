@@ -27,11 +27,7 @@ function renderBar(ctx, position, heightShare = 0, color) {
 }
 
 function getRoundMaxValue(arr) {
-  var result = arr.reduce(function (max, current) {
-    max = (current > max) ? current : max;
-    return max;
-  }, 0);
-  return Math.round(result);
+  return Math.round(Math.max(...arr));
 }
 
 function renderCloud(ctx, x, y, width, height, color) {
