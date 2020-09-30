@@ -15,10 +15,6 @@ var HEADER_HEIGHT = CLOUD_Y + GAP * 4 + FONT_GAP * 2;
 var MAX_BAR_HEIGHT = CLOUD_HEIGHT - GAP * 6 - FONT_GAP * 4;
 var NAMES_Y_POSITION = CLOUD_HEIGHT - GAP * 2 + CLOUD_Y;
 
-function getRandomSaturation() {
-  return `hsl(240, ${Math.random() * 100}%, 50%)`;
-}
-
 function renderBar(ctx, position, heightShare = 0, color) {
   ctx.fillStyle = color;
   var x = CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * position;
