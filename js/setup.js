@@ -6,13 +6,13 @@ const ROBE_COLORS = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 1
 const EYES_COLORS = [`black`, `red`, `blue`, `yellow`, `green`];
 const COUNT_OF_WIZARDS = 4;
 
-function getWizards(wizardFirstName, wizardSecondName, robeColors, eyesColors, countOfWizards) {
-  let wizards = [];
+function getWizards(countOfWizards) {
+  const wizards = [];
   for (let i = 0; i < countOfWizards; i++) {
-    const fullName = `${getRandomValue(wizardFirstName)} ${getRandomValue(wizardSecondName)}`;
+    const fullName = `${getRandomValue(WIZARD_FIRST_NAMES)} ${getRandomValue(WIZARD_SECOND_NAMES)}`;
     wizards.push({name: fullName,
-      coatColor: getRandomValue(robeColors),
-      eyesColor: getRandomValue(eyesColors),
+      coatColor: getRandomValue(ROBE_COLORS),
+      eyesColor: getRandomValue(EYES_COLORS),
     });
   }
   return wizards;
@@ -23,30 +23,30 @@ function getRandomValue(arr) {
 }
 
 function renderWizard(wizard) {
-  let wizardElement = similarWizardTemplate.cloneNode(true);
-
+  const wizardElement = similarWizardTemplate.cloneNode(true);
   wizardElement.querySelector(`.setup-similar-label`).textContent = wizard.name;
   wizardElement.querySelector(`.wizard-coat`).style.fill = wizard.coatColor;
   wizardElement.querySelector(`.wizard-eyes`).style.fill = wizard.eyesColor;
   return wizardElement;
 }
-function showElement(className, from = document) {
-  let element = from.querySelector(`.${className}`);
+
+function showElement(element) {
   element.classList.remove(`hidden`);
 }
 
-let userDialog = document.querySelector(`.setup`);
-showElement(`setup`);
+const userDialog = document.querySelector(`.setup`);
+showElement(userDialog);
 
-let similarListElement = userDialog.querySelector(`.setup-similar-list`);
-let similarWizardTemplate = document.querySelector(`#similar-wizard-template`)
+const similarListElement = userDialog.querySelector(`.setup-similar-list`);
+const similarWizardTemplate = document.querySelector(`#similar-wizard-template`)
   .content
   .querySelector(`.setup-similar-item`);
 
-let wizards = getWizards(WIZARD_FIRST_NAMES, WIZARD_SECOND_NAMES, ROBE_COLORS, EYES_COLORS, COUNT_OF_WIZARDS);
+const wizards = getWizards(COUNT_OF_WIZARDS);
 
-let fragment = document.createDocumentFragment();
+const fragment = document.createDocumentFragment();
 wizards.forEach((wizard) => fragment.appendChild(renderWizard(wizard)));
 similarListElement.appendChild(fragment);
 
-showElement(`setup-similar`, userDialog);
+const similarListBlock = userDialog.querySelector(`.setup-similar`);
+showElement(similarListBlock);
